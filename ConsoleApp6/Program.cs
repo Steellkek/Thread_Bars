@@ -31,13 +31,14 @@ namespace MyApp
                     i += 1;
                 }
                 //запуск потока
-                new Thread(() => Go(a, command, arguments)).Start();
+                //new Thread(() => Go(a, command, arguments)).Start();
+                ThreadPool.QueueUserWorkItem(callBack => Go(a, command, arguments));
                 Console.WriteLine("Введите текст запроса. Для остановки программы напишите /exit");
                 command = Console.ReadLine();
 
             }
             Console.WriteLine("Программа завершила работу.");
-
+            Thread.Sleep(10_000);
         }
 
         public static void Go(DummyRequestHandler a, string command, string[] arguments)
