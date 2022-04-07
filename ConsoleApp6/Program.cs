@@ -38,6 +38,7 @@ namespace MyApp
 
             }
             Console.WriteLine("Программа завершила работу.");
+            //чтобы потоки успели закончить работу
             Thread.Sleep(10_000);
         }
 
